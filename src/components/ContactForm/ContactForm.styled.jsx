@@ -3,11 +3,11 @@ import { Form, ErrorMessage } from 'formik';
 
 export const FormWrapper = styled.div`
   display: flex;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
   align-items: center;
 
   height: auto;
-  width: 40%;
+  width: auto;
   margin-bottom: 10px;
   padding: 20px;
   border: 1px solid black;
@@ -43,5 +43,6 @@ export const AddButton = styled.button`
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     transform: scale(1.05);
     background-color: lightblue;
+    border-color: skyblue;
   }
 `;

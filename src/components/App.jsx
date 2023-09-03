@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
+import { Section } from './Section/Section';
 
 export class App extends Component {
   state = {
@@ -41,11 +42,13 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <h1>Phonebook</h1>
-        <ContactForm />
+        <Section title="Phonebook">
+          <ContactForm />
+        </Section>
+        <Section title="Contacts">
+          <Filter />
+        </Section>
 
-        <h2>Contacts</h2>
-        <Filter />
         {/* <ContactList todo /> */}
       </div>
     );
