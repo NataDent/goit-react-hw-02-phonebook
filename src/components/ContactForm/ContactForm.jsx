@@ -12,9 +12,13 @@ import {
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(2, 'Too short!').required('Required'),
   number: Yup.string()
-    .min(7, 'Too Short!')
+    .min(9, 'Too Short!')
     .max(10, 'Too long!')
-    .required('Required'),
+    .required('The field cannot be empty')
+    .matches(
+      /[0-9]{3}-[0-9]{2}-[0-9]{2}/,
+      'Number must be in the format XXX-XX-XX'
+    ),
 });
 
 export const ContactForm = ({ onAdd }) => {

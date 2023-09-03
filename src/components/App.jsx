@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { Section } from './Section/Section';
+import { ContactList } from './ContactList/ContactList';
 
 export class App extends Component {
   state = {
@@ -29,27 +30,36 @@ export class App extends Component {
       ],
     }));
   };
+
   deleteContact = contactId => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
   };
 
-  onChange = e => {
-    this.setState({ filter: e.target.value });
-  };
+  onChange = e => this.setState({ filter: e.currentTarget.value });
 
   render() {
+    const { filter, contacts } = this.state;
     return (
       <div>
         <Section title="Phonebook">
-          <ContactForm />
-        </Section>
-        <Section title="Contacts">
-          <Filter />
+          <ContactForm addContact={this.addContact} />
         </Section>
 
-        {/* <ContactList todo /> */}
+        <Section title="Contacts">
+          <Filter value={filter} onChange={this.onChange} />
+          {contacts.lendth ? (
+            <ContactList
+              contacts={contacts.filter(contact =>
+                contact.name.toLowerCase().includes(filter.toLowerCase())
+              )}
+              deleteContact={this.deleteContact}
+            />
+          ) : (
+            <p>No contacts</p>
+          )}
+        </Section>
       </div>
     );
   }
