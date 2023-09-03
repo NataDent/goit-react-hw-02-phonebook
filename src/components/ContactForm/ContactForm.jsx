@@ -44,7 +44,7 @@ export const ContactForm = ({ onAdd }) => {
             <ErrorMessageStyled component="div" name="number" />
           </FieldWrapper>
 
-          <AddButton type="submit">Submit</AddButton>
+          <AddButton type="submit">Add contact</AddButton>
         </FormStyled>
       </Formik>
     </FormWrapper>

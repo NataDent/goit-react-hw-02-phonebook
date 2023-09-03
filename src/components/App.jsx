@@ -34,6 +34,10 @@ export class App extends Component {
     }));
   };
 
+  onChange = e => {
+    this.setState({ filter: e.target.value });
+  };
+
   render() {
     return (
       <div>
