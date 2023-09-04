@@ -15,8 +15,6 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   addContact = newContact => {
@@ -39,8 +37,15 @@ export class App extends Component {
 
   onChange = e => this.setState({ filter: e.currentTarget.value });
 
+  getFilteredContacts = ({ contacts, filter }) => {
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
+
   render() {
     const { filter, contacts } = this.state;
+
     return (
       <div>
         <Section title="Phonebook">
@@ -51,9 +56,7 @@ export class App extends Component {
           <Filter value={filter} onChange={this.onChange} />
           {contacts.length ? (
             <ContactList
-              contacts={contacts.filter(contact =>
-                contact.name.toLowerCase().includes(filter.toLowerCase())
-              )}
+              contacts={this.getFilteredContacts}
               deleteContact={this.deleteContact}
             />
           ) : (

@@ -14,7 +14,7 @@ export const FormWrapper = styled.div`
 `;
 
 export const FormStyled = styled(Form)`
-  margin-top: 16px;
+  /* margin-top: 16px; */
 `;
 
 export const Label = styled.label`
