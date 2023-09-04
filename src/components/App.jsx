@@ -49,7 +49,7 @@ export class App extends Component {
 
         <Section title="Contacts">
           <Filter value={filter} onChange={this.onChange} />
-          {contacts.lendth ? (
+          {contacts.length ? (
             <ContactList
               contacts={contacts.filter(contact =>
                 contact.name.toLowerCase().includes(filter.toLowerCase())
