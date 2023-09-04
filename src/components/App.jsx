@@ -35,7 +35,7 @@ export class App extends Component {
     }));
   };
 
-  onChange = e => this.setState({ filter: e.currentTarget.value });
+  onChange = filter => this.setState({ filter });
 
   getFilteredContacts = () => {
     const { contacts, filter } = this.state;
