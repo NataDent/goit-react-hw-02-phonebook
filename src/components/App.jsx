@@ -37,7 +37,8 @@ export class App extends Component {
 
   onChange = e => this.setState({ filter: e.currentTarget.value });
 
-  getFilteredContacts = ({ contacts, filter }) => {
+  getFilteredContacts = () => {
+    const { contacts, filter } = this.state;
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
@@ -56,7 +57,7 @@ export class App extends Component {
           <Filter value={filter} onChange={this.onChange} />
           {contacts.length ? (
             <ContactList
-              contacts={this.getFilteredContacts}
+              contacts={this.getFilteredContacts()}
               deleteContact={this.deleteContact}
             />
           ) : (
