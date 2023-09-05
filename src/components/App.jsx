@@ -22,21 +22,25 @@ export class App extends Component {
       contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
     );
 
-    const existingNumber = newNumber =>
-      this.state.contacts.find(contact => contact.number === newNumber);
-    if (!(existingContact && existingNumber)) {
-      return this.setState(prevState => ({
-        contacts: [
-          ...prevState.contacts,
-          {
-            id: nanoid(),
-            ...newContact,
-          },
-        ],
-      }));
-    } else {
-      alert(`Such name or number already exists`);
+    const existingNumber = newContact =>
+      this.state.contacts.find(contact => contact.number === newContact.number);
+    if (existingContact) {
+      alert(`Such name  already exists`);
+      return;
     }
+    if (existingNumber) {
+      alert(`Such number already exists`);
+      return;
+    }
+    this.setState(prevState => ({
+      contacts: [
+        ...prevState.contacts,
+        {
+          id: nanoid(),
+          ...newContact,
+        },
+      ],
+    }));
   };
 
   deleteContact = contactId => {
