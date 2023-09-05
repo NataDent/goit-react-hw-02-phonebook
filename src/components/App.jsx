@@ -22,8 +22,9 @@ export class App extends Component {
       contact => contact.name.toLowerCase() === newContact.name.toLowerCase()
     );
 
-    const existingNumber = newContact =>
-      this.state.contacts.find(contact => contact.number === newContact.number);
+    const existingNumber = this.state.contacts.find(
+      contact => contact.number === newContact.number
+    );
     if (existingContact) {
       alert(`Such name  already exists`);
       return;
